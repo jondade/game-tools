@@ -1,4 +1,4 @@
-$maps = { 
+$MAPS = { 
   'Bloodshot Stronghold' => ['Three Horns Valley'],
   'Caustic Caverns' => ['Sanctuary'],
   'End of the Line' => ['Tundra Express'],
@@ -28,7 +28,7 @@ def find_route(start,dest)
 end
 
 def list_maps
-  $maps.keys
+  $MAPS.keys
 end
 
 # sort the routes by shortest first
@@ -40,14 +40,14 @@ end
 def find_next(route,map,dest,all_routes)
   new_route = route.dup
   new_route.push(map)
-  if $maps[map].include?(dest)
+  if $MAPS[map].include?(dest)
     new_route.push(dest)
     all_routes.push(new_route)
   else
     # store of possible routes
     viable_maps = []
     # extract possible routes
-    $maps[map].each do |next_map|
+    $MAPS[map].each do |next_map|
       # route is not viable if it is already in the route
       next if new_route.include?(next_map)
       viable_maps.push(next_map)
