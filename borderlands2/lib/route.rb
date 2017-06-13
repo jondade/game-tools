@@ -31,9 +31,7 @@ class Router
   def add_route(map, route)
     # create route's map if it doesn't exist with
     # map as a route.
-    unless list_maps.include?(route)
-      @maps[route] = [map]
-    end
+    @maps[route] = [map] unless list_maps.include?(route)
     # add route to map's list.
     @maps[map].push(route)
     # write out the new yaml file.
